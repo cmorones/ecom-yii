@@ -1,0 +1,2055 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: cat_anos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_anos (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_anos OWNER TO kylix;
+
+--
+-- Name: cat_anos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_anos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_anos_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_anos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_anos_id_seq OWNED BY cat_anos.id;
+
+
+--
+-- Name: cat_asignatura; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_asignatura (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_asignatura OWNER TO kylix;
+
+--
+-- Name: cat_asignatura_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_asignatura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_asignatura_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_asignatura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_asignatura_id_seq OWNED BY cat_asignatura.id;
+
+
+--
+-- Name: cat_categoria_mat; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_categoria_mat (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_categoria_mat OWNER TO kylix;
+
+--
+-- Name: cat_categoria_mat_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_categoria_mat_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_categoria_mat_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_categoria_mat_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_categoria_mat_id_seq OWNED BY cat_categoria_mat.id;
+
+
+--
+-- Name: cat_grupos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_grupos (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_grupos OWNER TO kylix;
+
+--
+-- Name: cat_grupos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_grupos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_grupos_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_grupos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_grupos_id_seq OWNED BY cat_grupos.id;
+
+
+--
+-- Name: cat_labs; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_labs (
+    id integer NOT NULL,
+    id_plantel integer,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_labs OWNER TO kylix;
+
+--
+-- Name: cat_labs_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_labs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_labs_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_labs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_labs_id_seq OWNED BY cat_labs.id;
+
+
+--
+-- Name: cat_materiales; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_materiales (
+    id integer NOT NULL,
+    categoria integer,
+    tipo integer,
+    clave character varying,
+    nombre character varying,
+    unidad integer,
+    status integer
+);
+
+
+ALTER TABLE cat_materiales OWNER TO kylix;
+
+--
+-- Name: cat_materiales_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_materiales_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_materiales_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_materiales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_materiales_id_seq OWNED BY cat_materiales.id;
+
+
+--
+-- Name: cat_matyreact; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_matyreact (
+    id integer NOT NULL,
+    categoria integer,
+    tipo integer,
+    tipo_des integer,
+    clave character varying,
+    nombre character varying,
+    imagen character varying,
+    unidad integer,
+    status integer
+);
+
+
+ALTER TABLE cat_matyreact OWNER TO kylix;
+
+--
+-- Name: cat_matyreact_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_matyreact_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_matyreact_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_matyreact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_matyreact_id_seq OWNED BY cat_matyreact.id;
+
+
+--
+-- Name: cat_medida; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_medida (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_medida OWNER TO kylix;
+
+--
+-- Name: cat_medida_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_medida_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_medida_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_medida_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_medida_id_seq OWNED BY cat_medida.id;
+
+
+--
+-- Name: cat_modalidad; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_modalidad (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_modalidad OWNER TO kylix;
+
+--
+-- Name: cat_modalidad_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_modalidad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_modalidad_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_modalidad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_modalidad_id_seq OWNED BY cat_modalidad.id;
+
+
+--
+-- Name: cat_periodos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_periodos (
+    id integer NOT NULL,
+    id_year integer,
+    nombre character varying(255),
+    secuencia integer,
+    status integer
+);
+
+
+ALTER TABLE cat_periodos OWNER TO kylix;
+
+--
+-- Name: cat_periodos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_periodos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_periodos_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_periodos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_periodos_id_seq OWNED BY cat_periodos.id;
+
+
+--
+-- Name: cat_planteles; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_planteles (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_planteles OWNER TO kylix;
+
+--
+-- Name: cat_planteles_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_planteles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_planteles_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_planteles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_planteles_id_seq OWNED BY cat_planteles.id;
+
+
+--
+-- Name: cat_profesor; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_profesor (
+    id integer NOT NULL,
+    id_periodo integer,
+    id_plantel integer,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_profesor OWNER TO kylix;
+
+--
+-- Name: cat_profesor_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_profesor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_profesor_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_profesor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_profesor_id_seq OWNED BY cat_profesor.id;
+
+
+--
+-- Name: cat_reactivos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_reactivos (
+    id integer NOT NULL,
+    categoria integer,
+    clave character varying,
+    nombre character varying,
+    unidad integer,
+    status integer
+);
+
+
+ALTER TABLE cat_reactivos OWNER TO kylix;
+
+--
+-- Name: cat_reactivos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_reactivos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_reactivos_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_reactivos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_reactivos_id_seq OWNED BY cat_reactivos.id;
+
+
+--
+-- Name: cat_sesion; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_sesion (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_sesion OWNER TO kylix;
+
+--
+-- Name: cat_sesion_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_sesion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_sesion_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_sesion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_sesion_id_seq OWNED BY cat_sesion.id;
+
+
+--
+-- Name: cat_status; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_status (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_status OWNER TO kylix;
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_status_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_status_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_status_id_seq OWNED BY cat_status.id;
+
+
+--
+-- Name: cat_tipo; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_tipo (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_tipo OWNER TO kylix;
+
+--
+-- Name: cat_tipo_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_tipo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_tipo_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_tipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_tipo_id_seq OWNED BY cat_tipo.id;
+
+
+--
+-- Name: cat_tipo_mat; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_tipo_mat (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_tipo_mat OWNER TO kylix;
+
+--
+-- Name: cat_tipo_mat_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_tipo_mat_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_tipo_mat_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_tipo_mat_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_tipo_mat_id_seq OWNED BY cat_tipo_mat.id;
+
+
+--
+-- Name: cat_turno; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_turno (
+    id integer NOT NULL,
+    nombre character varying(255)
+);
+
+
+ALTER TABLE cat_turno OWNER TO kylix;
+
+--
+-- Name: cat_turno_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_turno_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_turno_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_turno_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_turno_id_seq OWNED BY cat_turno.id;
+
+
+--
+-- Name: consumo_lab; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE consumo_lab (
+    id integer NOT NULL,
+    id_material integer,
+    id_plantel integer,
+    id_sesion integer,
+    id_materia integer,
+    cantidad double precision,
+    estado integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone,
+    user_reg integer,
+    user_mod integer
+);
+
+
+ALTER TABLE consumo_lab OWNER TO kylix;
+
+--
+-- Name: consumo_lab_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE consumo_lab_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE consumo_lab_id_seq OWNER TO kylix;
+
+--
+-- Name: consumo_lab_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE consumo_lab_id_seq OWNED BY consumo_lab.id;
+
+
+--
+-- Name: consumo_materiales; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE consumo_materiales (
+    id integer NOT NULL,
+    id_material integer,
+    id_plantel integer,
+    id_sesion integer,
+    id_materia integer,
+    cantidad double precision,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE consumo_materiales OWNER TO kylix;
+
+--
+-- Name: consumo_materiales_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE consumo_materiales_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE consumo_materiales_id_seq OWNER TO kylix;
+
+--
+-- Name: consumo_materiales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE consumo_materiales_id_seq OWNED BY consumo_materiales.id;
+
+
+--
+-- Name: consumo_reactivos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE consumo_reactivos (
+    id integer NOT NULL,
+    id_material integer,
+    id_plantel integer,
+    id_sesion integer,
+    id_materia integer,
+    cantidad double precision,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE consumo_reactivos OWNER TO kylix;
+
+--
+-- Name: consumo_reactivos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE consumo_reactivos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE consumo_reactivos_id_seq OWNER TO kylix;
+
+--
+-- Name: consumo_reactivos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE consumo_reactivos_id_seq OWNED BY consumo_reactivos.id;
+
+
+--
+-- Name: inv_materiales; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE inv_materiales (
+    id integer NOT NULL,
+    id_material integer,
+    id_plantel integer,
+    id_medida integer,
+    cantidad double precision,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE inv_materiales OWNER TO kylix;
+
+--
+-- Name: inv_materiales_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE inv_materiales_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE inv_materiales_id_seq OWNER TO kylix;
+
+--
+-- Name: inv_materiales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE inv_materiales_id_seq OWNED BY inv_materiales.id;
+
+
+--
+-- Name: inv_reactivos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE inv_reactivos (
+    id integer NOT NULL,
+    id_material integer,
+    id_plantel integer,
+    id_medida integer,
+    cantidad double precision,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE inv_reactivos OWNER TO kylix;
+
+--
+-- Name: inv_reactivos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE inv_reactivos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE inv_reactivos_id_seq OWNER TO kylix;
+
+--
+-- Name: inv_reactivos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE inv_reactivos_id_seq OWNED BY inv_reactivos.id;
+
+
+--
+-- Name: invetario_lab; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE invetario_lab (
+    id integer NOT NULL,
+    id_catmat integer,
+    id_plantel integer,
+    entrada double precision,
+    user_reg integer,
+    user_mod integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE invetario_lab OWNER TO kylix;
+
+--
+-- Name: invetario_lab_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE invetario_lab_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE invetario_lab_id_seq OWNER TO kylix;
+
+--
+-- Name: invetario_lab_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE invetario_lab_id_seq OWNED BY invetario_lab.id;
+
+
+--
+-- Name: salidas_materiales; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE salidas_materiales (
+    id integer NOT NULL,
+    id_sesion integer,
+    id_material integer,
+    id_plantel integer,
+    id_medida integer,
+    cantidad double precision,
+    user_reg integer,
+    user_mod integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE salidas_materiales OWNER TO kylix;
+
+--
+-- Name: salidas_materiales_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE salidas_materiales_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE salidas_materiales_id_seq OWNER TO kylix;
+
+--
+-- Name: salidas_materiales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE salidas_materiales_id_seq OWNED BY salidas_materiales.id;
+
+
+--
+-- Name: salidas_reactivos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE salidas_reactivos (
+    id integer NOT NULL,
+    id_sesion integer,
+    id_material integer,
+    id_plantel integer,
+    id_medida integer,
+    cantidad double precision,
+    user_reg integer,
+    user_mod integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE salidas_reactivos OWNER TO kylix;
+
+--
+-- Name: salidas_reactivos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE salidas_reactivos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE salidas_reactivos_id_seq OWNER TO kylix;
+
+--
+-- Name: salidas_reactivos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE salidas_reactivos_id_seq OWNED BY salidas_reactivos.id;
+
+
+--
+-- Name: sesiones; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE sesiones (
+    id integer NOT NULL,
+    id_plantel integer,
+    id_lab integer,
+    id_periodo integer,
+    id_profesor integer,
+    id_asignatura integer,
+    id_grupo integer,
+    id_modalidad integer,
+    fecha timestamp without time zone,
+    hora_ini character varying,
+    hora_fin character varying,
+    num_estudiantes integer,
+    turno integer,
+    tipo_sesion integer,
+    actividades character varying,
+    observaciones character varying,
+    status integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE sesiones OWNER TO kylix;
+
+--
+-- Name: sesiones_escolar; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE sesiones_escolar (
+    id integer NOT NULL,
+    id_periodo integer,
+    id_plantel integer,
+    id_profesor integer,
+    clave character varying,
+    clave_materia character varying,
+    descripcion character varying,
+    sesion_dia character varying,
+    hora_ini time without time zone,
+    hora_fin time with time zone,
+    id_grupo integer
+);
+
+
+ALTER TABLE sesiones_escolar OWNER TO kylix;
+
+--
+-- Name: sesiones_escolar_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE sesiones_escolar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE sesiones_escolar_id_seq OWNER TO kylix;
+
+--
+-- Name: sesiones_escolar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE sesiones_escolar_id_seq OWNED BY sesiones_escolar.id;
+
+
+--
+-- Name: sesiones_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE sesiones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE sesiones_id_seq OWNER TO kylix;
+
+--
+-- Name: sesiones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE sesiones_id_seq OWNED BY sesiones.id;
+
+
+--
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE usuarios (
+    id integer NOT NULL,
+    nombre character varying,
+    email character varying,
+    perfil integer,
+    username character varying,
+    password character varying,
+    session character varying,
+    status integer
+);
+
+
+ALTER TABLE usuarios OWNER TO kylix;
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE usuarios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_id_seq OWNER TO kylix;
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE usuarios_id_seq OWNED BY usuarios.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_anos ALTER COLUMN id SET DEFAULT nextval('cat_anos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_asignatura ALTER COLUMN id SET DEFAULT nextval('cat_asignatura_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_categoria_mat ALTER COLUMN id SET DEFAULT nextval('cat_categoria_mat_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_grupos ALTER COLUMN id SET DEFAULT nextval('cat_grupos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_labs ALTER COLUMN id SET DEFAULT nextval('cat_labs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_materiales ALTER COLUMN id SET DEFAULT nextval('cat_materiales_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_matyreact ALTER COLUMN id SET DEFAULT nextval('cat_matyreact_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_medida ALTER COLUMN id SET DEFAULT nextval('cat_medida_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_modalidad ALTER COLUMN id SET DEFAULT nextval('cat_modalidad_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_periodos ALTER COLUMN id SET DEFAULT nextval('cat_periodos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_planteles ALTER COLUMN id SET DEFAULT nextval('cat_planteles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_profesor ALTER COLUMN id SET DEFAULT nextval('cat_profesor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_reactivos ALTER COLUMN id SET DEFAULT nextval('cat_reactivos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_sesion ALTER COLUMN id SET DEFAULT nextval('cat_sesion_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_status ALTER COLUMN id SET DEFAULT nextval('cat_status_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_tipo ALTER COLUMN id SET DEFAULT nextval('cat_tipo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_tipo_mat ALTER COLUMN id SET DEFAULT nextval('cat_tipo_mat_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_turno ALTER COLUMN id SET DEFAULT nextval('cat_turno_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY consumo_lab ALTER COLUMN id SET DEFAULT nextval('consumo_lab_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY consumo_materiales ALTER COLUMN id SET DEFAULT nextval('consumo_materiales_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY consumo_reactivos ALTER COLUMN id SET DEFAULT nextval('consumo_reactivos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY inv_materiales ALTER COLUMN id SET DEFAULT nextval('inv_materiales_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY inv_reactivos ALTER COLUMN id SET DEFAULT nextval('inv_reactivos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY invetario_lab ALTER COLUMN id SET DEFAULT nextval('invetario_lab_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY salidas_materiales ALTER COLUMN id SET DEFAULT nextval('salidas_materiales_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY salidas_reactivos ALTER COLUMN id SET DEFAULT nextval('salidas_reactivos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY sesiones ALTER COLUMN id SET DEFAULT nextval('sesiones_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY sesiones_escolar ALTER COLUMN id SET DEFAULT nextval('sesiones_escolar_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY usuarios ALTER COLUMN id SET DEFAULT nextval('usuarios_id_seq'::regclass);
+
+
+--
+-- Data for Name: cat_anos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_anos (id, nombre) FROM stdin;
+1	2016
+\.
+
+
+--
+-- Name: cat_anos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_anos_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_asignatura; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_asignatura (id, nombre) FROM stdin;
+2	Quimica
+3	Biología
+1	Fisica
+\.
+
+
+--
+-- Name: cat_asignatura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_asignatura_id_seq', 3, true);
+
+
+--
+-- Data for Name: cat_categoria_mat; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_categoria_mat (id, nombre) FROM stdin;
+2	EPI
+3	Instrumentos
+4	Utensilios
+1	Aparatos
+5	Químicos
+\.
+
+
+--
+-- Name: cat_categoria_mat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_categoria_mat_id_seq', 5, true);
+
+
+--
+-- Data for Name: cat_grupos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_grupos (id, nombre) FROM stdin;
+1	101
+\.
+
+
+--
+-- Name: cat_grupos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_grupos_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_labs; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_labs (id, id_plantel, nombre) FROM stdin;
+1	1	Laboratorio 1
+2	1	Laboratorio 2
+\.
+
+
+--
+-- Name: cat_labs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_labs_id_seq', 2, true);
+
+
+--
+-- Data for Name: cat_materiales; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_materiales (id, categoria, tipo, clave, nombre, unidad, status) FROM stdin;
+\.
+
+
+--
+-- Name: cat_materiales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_materiales_id_seq', 1, false);
+
+
+--
+-- Data for Name: cat_matyreact; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_matyreact (id, categoria, tipo, tipo_des, clave, nombre, imagen, unidad, status) FROM stdin;
+1	1	1	5	AME0901	Analizador de gases marca Bacharach	\N	7	1
+\.
+
+
+--
+-- Name: cat_matyreact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_matyreact_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_medida; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_medida (id, nombre) FROM stdin;
+1	Bolsa
+2	Caja
+3	Gramos
+4	Juego
+5	metros
+6	milimetros
+7	pieza
+8	rollo
+9	Kit
+10	mililitros
+11	Par
+12	Pliego
+13	Litros
+14	Cilindros
+15	Kilos
+16	Bolsa
+\.
+
+
+--
+-- Name: cat_medida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_medida_id_seq', 15, true);
+
+
+--
+-- Data for Name: cat_modalidad; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_modalidad (id, nombre) FROM stdin;
+1	Escolarizado
+\.
+
+
+--
+-- Name: cat_modalidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_modalidad_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_periodos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_periodos (id, id_year, nombre, secuencia, status) FROM stdin;
+1	1	2015 -2016 B	119	1
+\.
+
+
+--
+-- Name: cat_periodos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_periodos_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_planteles; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_planteles (id, nombre) FROM stdin;
+2	Alvaro Obregón
+3	Azcapotzalco
+4	Coyoacán
+5	Cuajimalpa
+6	GAM 1
+7	GAM 2
+8	Iztacalco
+9	Iztapalapa 2
+10	Magdalena Contreras
+11	Miguel Hidalgo
+12	Milpa Alta
+13	Tláhuac
+14	Tlalpan 1
+15	Tlalpan 2
+16	Xochimilco
+17	Venustiano Carranza
+18	Iztapalapa 3
+19	Alvaro Obregon 2
+20	Iztapalapa 4
+1	Iztapalapa 1
+\.
+
+
+--
+-- Name: cat_planteles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_planteles_id_seq', 20, true);
+
+
+--
+-- Data for Name: cat_profesor; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_profesor (id, id_periodo, id_plantel, nombre) FROM stdin;
+1	1	1	Cesar Morones Sanchez
+\.
+
+
+--
+-- Name: cat_profesor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_profesor_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_reactivos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_reactivos (id, categoria, clave, nombre, unidad, status) FROM stdin;
+\.
+
+
+--
+-- Name: cat_reactivos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_reactivos_id_seq', 1, false);
+
+
+--
+-- Data for Name: cat_sesion; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_sesion (id, nombre) FROM stdin;
+1	Ordinaria
+2	Adicional
+\.
+
+
+--
+-- Name: cat_sesion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_sesion_id_seq', 2, true);
+
+
+--
+-- Data for Name: cat_status; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_status (id, nombre) FROM stdin;
+1	Activo
+2	Baja
+\.
+
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_status_id_seq', 2, true);
+
+
+--
+-- Data for Name: cat_tipo; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_tipo (id, nombre) FROM stdin;
+1	Materiales
+2	Reactivos químicos
+\.
+
+
+--
+-- Name: cat_tipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_tipo_id_seq', 2, true);
+
+
+--
+-- Data for Name: cat_tipo_mat; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_tipo_mat (id, nombre) FROM stdin;
+1	Didáctico
+2	Disección
+3	Eléctrico
+4	Herramienta
+5	Medición
+6	Protección
+7	Recipientes
+8	Soporte
+9	Uso especfico
+10	Volumetrico
+11	Sustancias
+\.
+
+
+--
+-- Name: cat_tipo_mat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_tipo_mat_id_seq', 11, true);
+
+
+--
+-- Data for Name: cat_turno; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_turno (id, nombre) FROM stdin;
+1	Matutino
+2	Vespertino
+\.
+
+
+--
+-- Name: cat_turno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_turno_id_seq', 2, true);
+
+
+--
+-- Data for Name: consumo_lab; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY consumo_lab (id, id_material, id_plantel, id_sesion, id_materia, cantidad, estado, fecha_reg, fecha_mod, user_reg, user_mod) FROM stdin;
+1	1	1	1	1	1	1	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: consumo_lab_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('consumo_lab_id_seq', 1, true);
+
+
+--
+-- Data for Name: consumo_materiales; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY consumo_materiales (id, id_material, id_plantel, id_sesion, id_materia, cantidad, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: consumo_materiales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('consumo_materiales_id_seq', 1, false);
+
+
+--
+-- Data for Name: consumo_reactivos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY consumo_reactivos (id, id_material, id_plantel, id_sesion, id_materia, cantidad, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: consumo_reactivos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('consumo_reactivos_id_seq', 1, false);
+
+
+--
+-- Data for Name: inv_materiales; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY inv_materiales (id, id_material, id_plantel, id_medida, cantidad, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: inv_materiales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('inv_materiales_id_seq', 1, false);
+
+
+--
+-- Data for Name: inv_reactivos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY inv_reactivos (id, id_material, id_plantel, id_medida, cantidad, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: inv_reactivos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('inv_reactivos_id_seq', 1, false);
+
+
+--
+-- Data for Name: invetario_lab; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY invetario_lab (id, id_catmat, id_plantel, entrada, user_reg, user_mod, fecha_reg, fecha_mod) FROM stdin;
+1	1	1	1	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: invetario_lab_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('invetario_lab_id_seq', 2, true);
+
+
+--
+-- Data for Name: salidas_materiales; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY salidas_materiales (id, id_sesion, id_material, id_plantel, id_medida, cantidad, user_reg, user_mod, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: salidas_materiales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('salidas_materiales_id_seq', 1, false);
+
+
+--
+-- Data for Name: salidas_reactivos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY salidas_reactivos (id, id_sesion, id_material, id_plantel, id_medida, cantidad, user_reg, user_mod, fecha_reg, fecha_mod) FROM stdin;
+\.
+
+
+--
+-- Name: salidas_reactivos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('salidas_reactivos_id_seq', 1, false);
+
+
+--
+-- Data for Name: sesiones; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY sesiones (id, id_plantel, id_lab, id_periodo, id_profesor, id_asignatura, id_grupo, id_modalidad, fecha, hora_ini, hora_fin, num_estudiantes, turno, tipo_sesion, actividades, observaciones, status, fecha_reg, fecha_mod) FROM stdin;
+1	1	1	1	1	1	1	1	2016-04-21 00:00:00	08:00	09:00	20	1	1	varias	varias	1	2016-04-21 00:00:00	\N
+2	2	1	1	1	1	1	1	2016-05-23 00:00:00	12:00	14:00	20	1	1	pruerba 	prueba	1	\N	\N
+\.
+
+
+--
+-- Data for Name: sesiones_escolar; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY sesiones_escolar (id, id_periodo, id_plantel, id_profesor, clave, clave_materia, descripcion, sesion_dia, hora_ini, hora_fin, id_grupo) FROM stdin;
+1	1	1	1	1	1	FISICA	LUNES	08:00:00	09:30:00-05	1
+\.
+
+
+--
+-- Name: sesiones_escolar_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('sesiones_escolar_id_seq', 1, true);
+
+
+--
+-- Name: sesiones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('sesiones_id_seq', 2, true);
+
+
+--
+-- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY usuarios (id, nombre, email, perfil, username, password, session, status) FROM stdin;
+\.
+
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('usuarios_id_seq', 1, false);
+
+
+--
+-- Name: cat_anoss_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_anos
+    ADD CONSTRAINT cat_anoss_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_asignatura_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_asignatura
+    ADD CONSTRAINT cat_asignatura_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_categoria_mat_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_categoria_mat
+    ADD CONSTRAINT cat_categoria_mat_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_grupos_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_grupos
+    ADD CONSTRAINT cat_grupos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_labs_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_labs
+    ADD CONSTRAINT cat_labs_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_medida_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_medida
+    ADD CONSTRAINT cat_medida_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_modalidad_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_modalidad
+    ADD CONSTRAINT cat_modalidad_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_periodos_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_periodos
+    ADD CONSTRAINT cat_periodos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_planteles_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_planteles
+    ADD CONSTRAINT cat_planteles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_profesor_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_profesor
+    ADD CONSTRAINT cat_profesor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_sesion_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_sesion
+    ADD CONSTRAINT cat_sesion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_status_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_status
+    ADD CONSTRAINT cat_status_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_tipo_mat_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_tipo_mat
+    ADD CONSTRAINT cat_tipo_mat_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_tipo_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_tipo
+    ADD CONSTRAINT cat_tipo_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_turno_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_turno
+    ADD CONSTRAINT cat_turno_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: conslab_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY consumo_lab
+    ADD CONSTRAINT conslab_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: consmat_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY consumo_materiales
+    ADD CONSTRAINT consmat_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: consreact_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY consumo_reactivos
+    ADD CONSTRAINT consreact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: id_session; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY sesiones_escolar
+    ADD CONSTRAINT id_session PRIMARY KEY (id);
+
+
+--
+-- Name: invetario_lab_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY invetario_lab
+    ADD CONSTRAINT invetario_lab_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invmat_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY inv_materiales
+    ADD CONSTRAINT invmat_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invreact_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY inv_reactivos
+    ADD CONSTRAINT invreact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mat_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_materiales
+    ADD CONSTRAINT mat_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: matyreact_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_matyreact
+    ADD CONSTRAINT matyreact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: react_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_reactivos
+    ADD CONSTRAINT react_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sesiones_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY sesiones
+    ADD CONSTRAINT sesiones_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slmat2_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY salidas_materiales
+    ADD CONSTRAINT slmat2_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slmat_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY salidas_reactivos
+    ADD CONSTRAINT slmat_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
